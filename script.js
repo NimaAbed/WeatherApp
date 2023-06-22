@@ -3,6 +3,7 @@ const input = document.querySelector(".top-banner form input")
 const form=document.querySelector(".top-banner form")
 const getUl = document.querySelector(".cities")
 const ul =document.querySelector(".cities")
+const getmsg=document.querySelector(".msg")
 form.addEventListener("submit",submitHandler)
 function submitHandler(e){
     e.preventDefault()
@@ -21,9 +22,14 @@ function submitHandler(e){
     </h2>
     <div class="city-temp">${Math.round(main.temp)}</div>
     <figure>
-        <img class="city-icon" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/01d.svg" alt="city">
+        <img class="city-icon" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/${weather[0]["icon"]}.svg" alt="city">
         <figurecaption>${weather[0].description}</figurecaption>
     </figure>`
     ul.appendChild(li)
+    input.value=""
+    })
+    .catch(message=>{
+        getmsg.innerHTML="Search for a valid city"
+        input.value=""
     })
 }
